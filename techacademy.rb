@@ -12,17 +12,23 @@ end
 # ノコギリを使ってhtmlを解析
 doc = Nokogiri::HTML.parse(html, charset)
 
-url, filename = ARGV[0], ARGV[1]
+#url, filename = ARGV[0], ARGV[1]
 
-puts file.base_uri
-puts file.charset
-puts file.content_type
-puts file.last_modified
-puts file.meta
-puts file.status
+#puts file.base_uri
+#puts file.charset
+#puts file.content_type
+#puts file.last_modified
+#puts file.meta
+#puts file.status
 
-open(url) do |file|
-  open(filename, "w+b") do |out|
-    out.write(file.read)
-  end
+#open(url) do |file|
+#  open(filename, "w+b") do |out|
+#    out.write(file.read)
+#  end
+#end
+
+open("https://techacademy.jp/magazine/6235#sec3") do |uri|
+    File.open("result.html", "w") do |html|
+        html.puts(uri.read)
+    end
 end

@@ -1,0 +1,1460 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>今さら聞けない！GitHubの使い方【超初心者向け】 | TechAcademyマガジン</title>
+    <!-- Tag Description -->
+<!-- /Tag Description -->
+    <!-- Open Graph Meta -->
+<meta property="og:site_name" content="TechAcademyマガジン" />
+<meta property="fb:app_id" content="118067648358293" />
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@techacademy" />
+<meta name="twitter:creator" content="@techacademy" />
+  <meta property="og:title" content="今さら聞けない！GitHubの使い方【超初心者向け】" />
+  <meta property="og:description" content="今まで使ったことがない初心者向けに「GitHubの使い方」を解説した記事です。Gitを使う上で知っておきたい、ローカルリポジトリとリモートリポジトリ、コミットとプッシュなども細かく紹介。最後は、よく使うGitのコマンド12もあり。" />
+  <meta property="og:url" content="https://techacademy.jp/magazine/6235" />
+  <meta property="og:image" content="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/eyecatch-20151002-620x349.jpg" />
+  <meta name="twitter:title" content="今さら聞けない！GitHubの使い方【超初心者向け】" />
+  <meta name="twitter:description" content="今まで使ったことがない初心者向けに「GitHubの使い方」を解説した記事です。Gitを使う上で知っておきたい、ローカルリポジトリとリモートリポジトリ、コミットとプッシュなども細かく紹介。最後は、よく使うGitのコマンド12もあり。" />
+  <meta name="twitter:image" content="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/eyecatch-20151002-620x349.jpg" />
+<!-- /Open Graph Meta -->
+    <!-- Facebook -->
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=118067648358293";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<!-- Google Plus -->
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {lang: 'ja',
+    annotation: 'none'}
+</script>
+<!-- Hatena -->
+<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>    <link rel="shortcut icon" href="https://static.techacademy.jp/magazine/wp-content/themes/ta-magazine/images/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="https://static.techacademy.jp/magazine/wp-content/themes/ta-magazine/style.css?1490689661" media="all">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://static.techacademy.jp/magazine/wp-content/themes/ta-magazine/js/lib/wow.min.js"></script>
+    <script src="https://static.techacademy.jp/magazine/wp-content/themes/ta-magazine/js/scripts.js?1503993074"></script>
+    
+<!-- All in One SEO Pack 2.3.8 by Michael Torbert of Semper Fi Web Design[231,282] -->
+<link rel="author" href="https://plus.google.com/102497984944811698625/?rel=author" />
+<meta name="description" itemprop="description" content="今まで使ったことがない初心者向けに「GitHubの使い方」を解説した記事です。Gitを使う上で知っておきたい、ローカルリポジトリとリモートリポジトリ、コミットとプッシュなども細かく紹介。最後は、よく使うGitのコマンド12もあり。" />
+
+<meta name="keywords" itemprop="keywords" content="ハウツー" />
+
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//js.hs-scripts.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//techacademy.jp' />
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/techacademy.jp\/magazine\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.1"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b===c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='https://static.techacademy.jp/magazine/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.8' type='text/css' media='all' />
+<link rel='stylesheet' id='wpt-twitter-feed-css'  href='https://static.techacademy.jp/magazine/wp-content/plugins/wp-to-twitter/css/twitter-feed.css?ver=4.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://static.techacademy.jp/magazine/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css'  href='https://static.techacademy.jp/magazine/wp-content/plugins/wordpress-popular-posts/style/wpp.css?ver=3.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='amazonjs-css'  href='https://static.techacademy.jp/magazine/wp-content/plugins/amazonjs/css/amazonjs.css?ver=0.8' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://static.techacademy.jp/magazine/wp-content/plugins/jetpack/css/jetpack.css?ver=4.0.4' type='text/css' media='all' />
+<script type='text/javascript' src='https://static.techacademy.jp/magazine/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://static.techacademy.jp/magazine/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='https://techacademy.jp/magazine/wp-json/' />
+<link rel="canonical" href="https://techacademy.jp/magazine/6235" />
+<link rel="alternate" type="application/json+oembed" href="https://techacademy.jp/magazine/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftechacademy.jp%2Fmagazine%2F6235" />
+<link rel="alternate" type="text/xml+oembed" href="https://techacademy.jp/magazine/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftechacademy.jp%2Fmagazine%2F6235&#038;format=xml" />
+<style type='text/css'>img#wpstats{display:none}</style>				<!-- WordPress Popular Posts v3.3.3 -->
+				<script type="text/javascript">//<![CDATA[
+
+					var sampling_active = 0;
+					var sampling_rate   = 100;
+					var do_request = false;
+
+					if ( !sampling_active ) {
+						do_request = true;
+					} else {
+						var num = Math.floor(Math.random() * sampling_rate) + 1;
+						do_request = ( 1 === num );
+					}
+
+					if ( do_request ) {
+
+						// Create XMLHttpRequest object and set variables
+						var xhr = ( window.XMLHttpRequest )
+						  ? new XMLHttpRequest()
+						  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+						url = 'https://techacademy.jp/magazine/wp-admin/admin-ajax.php',
+						params = 'action=update_views_ajax&token=0935ae8693&wpp_id=6235';
+						// Set request method and target URL
+						xhr.open( "POST", url, true );
+						// Set request header
+						xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+						// Hook into onreadystatechange
+						xhr.onreadystatechange = function() {
+							if ( 4 === xhr.readyState && 200 === xhr.status ) {
+								if ( window.console && window.console.log ) {
+									window.console.log( xhr.responseText );
+								}
+							}
+						};
+						// Send request
+						xhr.send( params );
+
+					}
+
+				//]]></script>
+				<!-- End WordPress Popular Posts v3.3.3 -->
+				</head>
+<body id="top" class="post-template-default single single-post postid-6235 single-format-standard">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-57STXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-57STXX');</script>
+<!-- /Google Tag Manager -->
+
+
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="navbar-header">
+        <h1 class="ta-magazine navbar-brand">
+          <a href="https://techacademy.jp/magazine">TechAcademyマガジン</a>
+        </h1>
+        <!--<p class="navbar-text">教育 × テクノロジーのWebメディア</p>-->
+      </div>
+      <!--Nav links-->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a id="category-news" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ニュース</a>
+            <ul class="dropdown-menu" aria-labelledby="category-news">
+              <li><a href="https://techacademy.jp/magazine/report">最新記事</a></li>
+<li><a href="https://techacademy.jp/magazine/edtech">EdTech（エドテック）</a></li>            </ul>
+          </li>
+          <li class="dropdown">
+            <a id="category-interview" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">インタビュー</a>
+            <ul class="dropdown-menu" aria-labelledby="category-interview">
+              <li><a href="https://techacademy.jp/magazine/interview">インタビュー</a></li>
+<li><a href="https://techacademy.jp/magazine/eventreport">イベントレポート</a></li>            </ul>
+          </li>
+          <li class="dropdown">
+            <a id="category-tech" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">テクノロジー</a>
+            <ul class="dropdown-menu" aria-labelledby="category-tech">
+              <li><a href="https://techacademy.jp/magazine/programming">プログラミング</a></li>
+<li><a href="https://techacademy.jp/magazine/smartphone">スマートフォンアプリ開発</a></li>
+<li><a href="https://techacademy.jp/magazine/webdesign">Webデザイン</a></li>
+<li><a href="https://techacademy.jp/magazine/web-marketing">Webマーケティング</a></li>
+<li><a href="https://techacademy.jp/magazine/webdirection">Webディレクション</a></li>
+<!--<li><a href="https://techacademy.jp/magazine/tool">ツール系</a></li>-->
+<!--<li><a href="https://techacademy.jp/magazine/microsoft-office">Microsoft Office</a></li>-->
+<!--<li><a href="https://techacademy.jp/magazine/computer">パソコン周辺機器</a></li>-->            </ul>
+          </li>
+          <li class="dropdown">
+            <a id="category-career" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">キャリア</a>
+            <ul class="dropdown-menu" aria-labelledby="category-career">
+              <li><a href="https://techacademy.jp/magazine/career">キャリア・転職</a></li>            </ul>
+          </li>
+          <li class="dropdown">
+            <a id="category-contact" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">お問い合わせ</a>
+            <ul class="dropdown-menu" aria-labelledby="category-contact">
+              <li><a href="https://techacademy.jp/magazine/ads">広告掲載について</a></li>
+<li><a href="https://techacademy.jp/magazine/contact">お問い合わせ</a></li>            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Drawer -->
+<span id="humberger">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</span>
+<div id="drawer-nav">
+  <ul>
+    <li>
+    <h3><i class="fa fa-chevron-down fa-l"></i>ニュース</h3>
+      <ul>
+        <li><a href="https://techacademy.jp/magazine/report">最新記事</a></li>
+<li><a href="https://techacademy.jp/magazine/edtech">EdTech（エドテック）</a></li>      </ul>
+    </li>
+    <li>
+      <h3><i class="fa fa-chevron-down fa-l"></i>インタビュー</h3>
+      <ul>
+        <li><a href="https://techacademy.jp/magazine/interview">インタビュー</a></li>
+<li><a href="https://techacademy.jp/magazine/eventreport">イベントレポート</a></li>      </ul>
+    </li>
+    <li>
+      <h3><i class="fa fa-chevron-down fa-l"></i>テクノロジー</h3>
+      <ul>
+        <li><a href="https://techacademy.jp/magazine/programming">プログラミング</a></li>
+<li><a href="https://techacademy.jp/magazine/smartphone">スマートフォンアプリ開発</a></li>
+<li><a href="https://techacademy.jp/magazine/webdesign">Webデザイン</a></li>
+<li><a href="https://techacademy.jp/magazine/web-marketing">Webマーケティング</a></li>
+<li><a href="https://techacademy.jp/magazine/webdirection">Webディレクション</a></li>
+<!--<li><a href="https://techacademy.jp/magazine/tool">ツール系</a></li>-->
+<!--<li><a href="https://techacademy.jp/magazine/microsoft-office">Microsoft Office</a></li>-->
+<!--<li><a href="https://techacademy.jp/magazine/computer">パソコン周辺機器</a></li>-->      </ul>
+    </li>
+    <li>
+      <h3><i class="fa fa-chevron-down fa-l"></i>キャリア</h3>
+      <ul>
+        <li><a href="https://techacademy.jp/magazine/career">キャリア・転職</a></li>      </ul>
+    </li>
+    <li>
+      <h3><i class="fa fa-chevron-down fa-l"></i>お問い合わせ</h3>
+      <ul>
+        <li><a href="https://techacademy.jp/magazine/ads">広告掲載について</a></li>
+<li><a href="https://techacademy.jp/magazine/contact">お問い合わせ</a></li>      </ul>
+    </li>
+  </ul>
+</div>
+<!-- Drawer -->
+
+<!--breadcrumbs-->
+
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <span typeof="v:Breadcrumb">
+        <a rel="v:url" property="v:title" title="TechAcademy（テックアカデミー）" href="https://techacademy.jp/" class="breadcrumb-home"><i class="fa fa-home"></i><strong>TechAcademy（テックアカデミー）</strong></a>
+      </span>
+            <!-- Breadcrumb NavXT 5.4.0 -->
+<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to the プログラミング category archives." href="https://techacademy.jp/magazine/programming" class="taxonomy category">プログラミング</a></span><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to the Git category archives." href="https://techacademy.jp/magazine/programming/git" class="taxonomy category">Git</a></span><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to 今さら聞けない！GitHubの使い方【超初心者向け】." href="https://techacademy.jp/magazine/6235" class="post post-post current-item">今さら聞けない！GitHubの使い方【超初心者向け】</a></span>    </div>
+  </div>
+<!--/breadcrumbs-->
+
+<!--campaign bar-->
+<!--/campaign bar-->
+
+
+<!-- container-fluid -->
+<div class="container-fluid" id="contents">
+
+<div class="ad-mobile-top">
+
+  
+    <!-- TechAcademy_MobileTop_320x100 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:320px;height:100px"
+         data-ad-client="ca-pub-2002061910642335"
+         data-ad-slot="9267870307"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  
+</div>
+
+<div class="container-inner inner-md">
+  <div class="row">
+
+    <div class="content col-md-9 col-sm-9 animated fadeInUp">
+              <div class="post-category">
+          <a href="https://techacademy.jp/magazine/programming/git">Git</a>
+        </div>
+        <article class="post" id="post-6235">
+
+          <div class="post-header">
+
+  <h1><a href="https://techacademy.jp/magazine/6235" rel="bookmark" title="Permanent Link to 今さら聞けない！GitHubの使い方【超初心者向け】">今さら聞けない！GitHubの使い方【超初心者向け】</a></h1>
+
+  <p class="post-description">今まで使ったことがない初心者向けに「GitHubの使い方」を解説した記事です。Gitを使う上で知っておきたい、ローカルリポジトリとリモートリポジトリ、コミットとプッシュなども細かく紹介。最後は、よく使うGitのコマンド12もあり。</p>
+
+  <div class="social-button">
+    <span class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-text="今さら聞けない！GitHubの使い方【超初心者向け】 | TechAcademyマガジン" data-url="https://techacademy.jp/magazine/6235" data-count="horizontal" data-via="techacademy" data-lang="en">Tweet</a></span>
+    <span class="facebook-like"><div class="fb-like" data-href="https://techacademy.jp/magazine/6235" data-send="false" data-layout="button" data-width="120" data-show-faces="true"></div></span>
+    <span class="facebook-share"><div class="fb-share-button" data-href="https://techacademy.jp/magazine/6235" data-layout="button_count" data-size="small" data-mobile-iframe="true"></div></span>
+    <span class="google mobile-hide"><g:plusone size="medium" href="https://techacademy.jp/magazine/6235"></g:plusone></span>
+    <span class="hatena mobile-hide"><a href="http://b.hatena.ne.jp/entry/https://techacademy.jp/magazine/6235" class="hatena-bookmark-button" data-hatena-bookmark-title="今さら聞けない！GitHubの使い方【超初心者向け】" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></span>
+    <span class="pocket tablet-hide"><a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a></span>
+    <span class="date tablet-hide"><a href="https://techacademy.jp/magazine/date/2017/04" title="2017年4月の記事アーカイブ"><i class="fa fa-calendar fa-l"></i>2017/4/2</a></span>
+  </div>
+
+  <div class="eyecatch" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/eyecatch-20151002-620x349.jpg')"></div>
+
+  <p class="service-description">
+    TechAcademyマガジンはオンラインのプログラミングスクール<a href="https://techacademy.jp/?utm_source=tamagazine&utm_medium=referral&utm_campaign=single-top" target="_blank">TechAcademy [テックアカデミー]</a>が運営する教育×テクノロジーのWebメディアです。初心者でもすぐ勉強できる記事が1,000以上あります。
+  </p>
+
+</div>
+          <div class="post-body">
+              <p>開発者にとってなくてはならないサービスとして<strong>GitHub</strong>があります。エンジニアにとっては当たり前のサービスですが、これからプログラミングの勉強を始める初心者にとってはよくわからないかもしれません。</p>
+<p>そこで今回は、そんな初心者でも今日から使えるように解説していきます。そもそもGithubとは何なのか、どんな時に使うツールなのかを知っていきながら実際の使い方を紹介しています。</p>
+<p>本格的に使おうと思ったらもっと多くのことを知らなくてはなりませんが、業務で使うということでなければ十分でしょう。</p>
+<p>&nbsp;</p>
+<p>なお本記事は、TechAcademyの<a href="https://techacademy.jp/github-training?utm_source=tamagazine&amp;utm_medium=referral&amp;utm_content=6235&amp;utm_campaign=post" target="_blank" rel="noopener">オンライン完結のGitHub講座</a>のカリキュラムをもとに執筆しています。</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8554" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png" alt="20160620" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>田島メンター！！GitHubってなんですか〜？</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8553" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2.png" alt="20163020-2" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>GitHubはね、Gitをオンライン上で管理するサービスだよ。</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8554" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png" alt="20160620" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>もう少し詳しくおしえてもらえますか〜？</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>目次</h2>
+<ul>
+<li><a href="#sec1">GitHubとは</a></li>
+<li><a href="#sec2">GitHubのアカウント登録</a></li>
+<li><a href="#sec3">GitHubを使う上で知っておきたい事前知識</a></li>
+<li><a href="#sec4">GitHubの使い方</a></li>
+<li><a href="#sec5">よく使うGitのコマンド12</a></li>
+</ul>
+<p>&nbsp;</p>
+<h2 id="sec1">GitHubとは</h2>
+<p>GitHubとは、ソフトウェア開発プロジェクトのためのソースコード管理サービスです。</p>
+<p>公開されているソースコードの閲覧や簡単なバグ管理機能、SNSの機能を備えており、開発者にとって無くてはならないサービスです。</p>
+<p>また、GitHubを使ってバージョン管理を行っている企業も多数あります。</p>
+<p>&nbsp;</p>
+<p><a href="https://techacademy.jp/briefing-lp-s?utm_source=tamagazine&utm_medium=referral&utm_campaign=sidebar-bottom-l&utm_content=single-middle" target='_blank'>[PR] 現役エンジニアに質問しながらプログラミングを習得する学習方法とは</a></p><h2 id="sec2">GitHubのアカウント登録</h2>
+<p>それでは早速GitHubに登録してみましょう。</p>
+<p>まずは、<a href="https://github.com/" target="_blank" rel="noopener">GitHubのトップページ</a>にアクセスします。</p>
+<p>ここで、ユーザ名とメールアドレス、パスワードを入力して、アカウント登録を行ってください。</p>
+<p><img class="alignnone size-full wp-image-6237" src="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-01-620x652.png" alt="github-01" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-01-620x652.png 620w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-01-620x652-300x139.png 300w" sizes="(max-width: 620px) 100vw, 620px" /></p>
+<p>&nbsp;</p>
+<p>続いて、プランを選択します。有料のプランもありますが、無料で使えるFreeプランがあります。</p>
+<p>今回はFreeプランで登録するので、「Free」を選んでから「Finish sign up」ボタンをクリックします。</p>
+<p><img class="alignnone size-full wp-image-6238" src="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-02-02-620x521.png" alt="github-02" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-02-02-620x521.png 620w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-02-02-620x521-300x252.png 300w" sizes="(max-width: 620px) 100vw, 620px" /></p>
+<p>&nbsp;</p>
+<p>登録したメールアドレスに認証のメールが届きます。メールの内容に従いユーザ認証を行ってください。</p>
+<p>以上でGitHubのアカウント登録は完了です。</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8554" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png" alt="20160620" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>GitHubの登録はできました♪それで、どうやって使うんですか〜？</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8553" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2.png" alt="20163020-2" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>その前にいくつか知っておいたほうがいいことがあるから、教えておくね。</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8554" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png" alt="20160620" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>はい、お願いします♪</p>
+<p>&nbsp;</p>
+<h2 id="sec3">GitHubを使う上で知っておきたい事前知識</h2>
+<p>早速GitHubを使っていきたいところですが、使い始める前に知っておきたい事前知識を3つ紹介します。</p>
+<p>ここで紹介する言葉がまったくわからない場合は、理解しておきましょう。</p>
+<p>&nbsp;</p>
+<h3>事前知識1：ローカルリポジトリとリモートリポジトリ</h3>
+<p>リポジトリとは、ファイルやディレクトリの状態を保存する場所です。変更履歴を管理したいディレクトリなどをリポジトリの管理下に置くことで、そのディレクトリ内のファイルなどの変更履歴を記録することができます。</p>
+<p>リポジトリは自分のマシン内にある「ローカルリポジトリ」とサーバなどネットワーク上にある「リモートリポジトリ」の2箇所にあります。基本的にローカルリポジトリで作業を行い、その作業内容をリモートポジトリへプッシュする流れで行います。</p>
+<p><img class="alignnone wp-image-9156" src="https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/git_repository_figure.png" alt="git_repository_figure" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/git_repository_figure.png 1000w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/git_repository_figure-400x240.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/git_repository_figure-768x461.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/git_repository_figure-800x480.png 800w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<p>&nbsp;</p>
+<h3>事前知識2：コミットとプッシュとは</h3>
+<p>最低限この2つは知っておきましょう。</p>
+<ul>
+<li><strong>コミット(commit)</strong> ：ファイルの追加や変更の履歴をリポジトリに保存すること</li>
+<li><strong>プッシュ(push)</strong> ：ファイルの追加や変更の履歴をリモートリポジトリにアップロードするための操作</li>
+</ul>
+<p>&nbsp;</p>
+<h3>事前知識3：ブランチ（branch）とは</h3>
+<p>ソフトウェアの開発では、現在リリースしてるバージョンのメンテナンスをしながら新たな機能追加やバグ修正を行うことがあります。このような、並行して行われる複数のバージョン管理を行うために、Gitにはブランチ（branch）という機能があります。</p>
+<p>ブランチは履歴の流れを分岐して記録していくものです。分岐したブランチは他のブランチの影響を受けないため、同じリポジトリ内でそれぞれの開発を行っていくことができます。</p>
+<p>&nbsp;</p>
+<h2 id="sec4">GitHubの使い方</h2>
+<p>それでは使い方を覚えていきましょう。</p>
+<p>基本的なGitの作業は下記のような流れとなるので、GitHubを使って順番に紹介します。</p>
+<p>なお、1の作成は初回のみ行い、2から5を繰り返します。</p>
+<p>基本的に小さい作業の単位でコミットを行い、ある程度作業がひと段落した時にプッシュをするのが一般的です。コミットの作業がわかりやすいように、コミットメッセージを残しておくと、ログを追っていく時に役立ちますので覚えておきましょう。</p>
+<p>&nbsp;</p>
+<ol>
+<li><a href="#sec6">Githubでリポジトリを作成（git init）、または複製（git clone）する</a></li>
+<li><a href="#sec7">ファイルの作成、編集を行う</a></li>
+<li><a href="#sec8">ファイルの作成/変更/削除をgitのインデックスに追加する（git add）</a></li>
+<li><a href="#sec9">変更結果をローカルリポジトリにコミットする（git commit）</a></li>
+<li><a href="#sec10">ローカルリポジトリをプッシュしてリモートリポジトリへ反映させる（git push）</a></li>
+</ol>
+<p>&nbsp;</p>
+<h3 id="sec6">GitHubでリポジトリを作成する</h3>
+<p>まずはリポジトリを作成します。</p>
+<p>GitHubにログインした状態で、「New Repository」ボタンを押下します。</p>
+<p><img class="alignnone size-full wp-image-6239" src="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-03-02-620x399.png" alt="リポジトリ作成" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-03-02-620x399.png 620w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-03-02-620x399-300x193.png 300w" sizes="(max-width: 620px) 100vw, 620px" /></p>
+<p>&nbsp;</p>
+<p>次に表示される画面では、「Repository name」の入力のあと、必要に応じて「Description」も入力します。</p>
+<p>また、リポジトリの種類を「Public」か「Private」を選択します。この「Private」リポジトリは、有料会員のみ作成することが可能です。</p>
+<p>最後に、リポジトリの中にあらかじめREADMEファイルを作成しておく場合は「Initialize this repository with a README」にチェックを入れます。.gitignoreやlicenseについては後で追加や変更ができますので、Noneを選択します。</p>
+<p><img class="alignnone size-full wp-image-6240" src="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-04-02-620x410.png" alt="github-04" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-04-02-620x410.png 620w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/github-04-02-620x410-300x198.png 300w" sizes="(max-width: 620px) 100vw, 620px" /></p>
+<p>必要項目の入力が終わり「Create repository」ボタンをクリックするとリポジトリの作成は完了です。</p>
+<p>次の画面で、リモートリポジトリのアドレスが表示されますので、控えておいてください。</p>
+<p>&nbsp;</p>
+<h3 id="sec7">ファイルの作成、編集を行う</h3>
+<p>今回は、「hello.html」というファイルをローカルのPC上に作成した想定で進めます。</p>
+<p><a href="http://techacademy.jp/magazine/986" target="_blank" rel="noopener">テキストエディタ</a>などでHTMLファイルを作ります。</p>
+<p><img class="alignnone size-large wp-image-6266" src="https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/hello-620x234.png" alt="hello" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/hello-620x234.png 620w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/hello-300x113.png 300w, https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/hello.png 642w" sizes="(max-width: 620px) 100vw, 620px" /></p>
+<p>&nbsp;</p>
+<p>はじめに、ローカルのPC上にローカルリポジトリを作成します。</p>
+<p>今回は「awesome」というディレクトリを作成することにします。</p>
+<blockquote><p>mkdir awesome<br />
+cd awesome<br />
+git init</p></blockquote>
+<p>「mkdir」は新しくディレクトリを作成するコマンドで、「cd」はディレクトリを移動するコマンドになります。awesomeというディレクトリを作成し、そのディレクトリに移動してから作業が始まります。</p>
+<p>そして、この「git init」コマンドはGitリポジトリを新たに作成するコマンドです。</p>
+<p>バージョン管理を行っていない既存のプロジェクトをGitリポジトリに変換する場合や、空の新規リポジトリを作成して初期化する場合に使用します。git initコマンドを実行するとカレントディレクトリをGitリポジトリに変換します。</p>
+<p>&nbsp;</p>
+<h3 id="sec8">ファイルの作成/変更/削除をgitのインデックスに追加する（git add）</h3>
+<p>先ほど作成した「hello.html」のファイルをローカルリポジトリに追加しましょう。<code><br />
+</code></p>
+<p>以下のコマンドでインデックスに追加します。<br />
+インデックスとは、リポジトリにコミットする準備をするために変更内容を一時的に保存する場所のことです。</p>
+<blockquote><p>git add hello.html</p></blockquote>
+<p>&nbsp;</p>
+<h3 id="sec9">変更結果をローカルリポジトリにコミットする（git commit）</h3>
+<p>次に、インデックスに追加されたファイルをコミットします。<br />
+コミットとは、ファイルやディレクトリの追加や変更をリポジトリに記録する操作のことです。</p>
+<blockquote><p>git commit -m &#8220;add new file&#8221;</p></blockquote>
+<p>&nbsp;</p>
+<p>これで、リポジトリに対してファイルの追加が記録されました。</p>
+<p>ファイルが追加されているか確認します。</p>
+<blockquote><p>git status</p></blockquote>
+<p>&nbsp;</p>
+<p>さらに、リモートリポジトリに反映させる前に、リモートリポジトリの情報を追加します。この情報は、先ほどGitHub上に表示された、リモートリポジトリのアドレスです。今回は例を示します。</p>
+<blockquote><p>git remote add origin https://github.com//awesome.git</p></blockquote>
+<p>&nbsp;</p>
+<h3 id="sec10">ローカルリポジトリをプッシュしてリモートリポジトリへ反映させる（git push）</h3>
+<p>ローカルリポジトリの変更を、GitHub上にあるリモートリポジトリに反映させるため、以下のコマンドを実行します。</p>
+<blockquote><p>git push origin master</p></blockquote>
+<p>GitHubのユーザ名とパスワードを尋ねられますので入力してください。<br />
+これで、GitHubへプッシュしてリモートリポジトリへ反映させることができました。</p>
+<p>&nbsp;</p>
+<h2 id="sec5">よく使うGitのコマンド12</h2>
+<p>最後によく使うGitのコマンドを12紹介します。<br />
+既に紹介しているものもありますが、まずはここから覚えておきましょう。</p>
+<p>&nbsp;</p>
+<h3>git status</h3>
+<p>リポジトリの状態を確認するために使うコマンドです。<br />
+現在のブランチの名称や、追加・変更されたファイルやディレクトリの一覧を表示します。</p>
+<blockquote><p>git status</p></blockquote>
+<p>&nbsp;</p>
+<h3>git add</h3>
+<p>ファイルやディレクトリをインデックスに追加するために使うコマンドです。<br />
+追加するときの[file_pattern]には、ファイル名やディレクトリ名を直接している他に、「*.txt」のように、ワイルドカードで複数対象を指定することもできます。</p>
+<blockquote><p>git add [file_pattern]</p></blockquote>
+<p>&nbsp;</p>
+<h3>git commit</h3>
+<p>インデックスに追加されたファイルやフォルダの変更をリポジトリに書き込むために使うコマンドです。オプションを指定しないでこのコマンドを実行すると、コミットメッセージを記述するためのエディタが起動します。</p>
+<p>エディタの使い方はそれぞれ異なりますので、簡単にメッセージを指定するには<code>-m</code>オプションを付けた後にダブルクォーテーションで囲ったメッセージを指定します。また、<code>-a</code>オプションを指定すると、変更されたファイルを検出してインデックスに追加する動作も同時に行います。</p>
+<blockquote><p>git commit -am &#8220;A first commit&#8221;</p></blockquote>
+<p>&nbsp;</p>
+<h3>git branch</h3>
+<p>ブランチに対して各種操作を行うために使うコマンドです。下記のように使います。</p>
+<ul>
+<li>git branch [branch-name]：ブランチの作成</li>
+<li>git branch：ブランチの一覧表示</li>
+<li>git branch –d [branch-name]：指定したブランチを削除</li>
+</ul>
+<p>&nbsp;</p>
+<h3>git checkout</h3>
+<p>ローカルリポジトリのブランチを切り替えるときに使うコマンドです。</p>
+<blockquote><p>git checkout [branch-name]</p></blockquote>
+<p>&nbsp;</p>
+<h3>git log</h3>
+<p>ローカルリポジトリのコミット履歴を閲覧するために使うコマンドです。<br />
+<code>-n</code>オプションで履歴の表示数を指定できます。</p>
+<blockquote><p>git log –n 10</p></blockquote>
+<p>&nbsp;</p>
+<h3>git grep</h3>
+<p>リポジトリのファイルの内容から検索したいときに使うコマンドです。</p>
+<p>特定の語句が含まれているファイルを検索し、そのファイルのどこに語句が含まれているかを調べることができます。</p>
+<blockquote><p>git grep &#8220;検索単語&#8221;</p></blockquote>
+<p>&nbsp;</p>
+<h3>git clone</h3>
+<p>既存のリモートリポジトリをローカルに落とすために使うコマンドです。<br />
+例えば、GitHubに公開されているリポジトリを自分のコンピュータへ落とすときに使います。</p>
+<blockquote><p>git clone [url]</p></blockquote>
+<p>&nbsp;</p>
+<h3>git remote</h3>
+<p>リモートリポジトリを操作するために使うコマンドで下記のように使います。</p>
+<ul>
+<li>git remote：リモートリポジトリの名称一覧を表示</li>
+<li>git remote -v：リモートリポジトリの詳細一覧を表示</li>
+<li>git remote add [name] [url]：リモートリポジトリを追加</li>
+<li>git remote rm [name]：リモートリポジトリを削除</li>
+</ul>
+<p>&nbsp;</p>
+<h3>git reset</h3>
+<p>ローカルリポジトリのコミットを取り消すために使うコマンドです。<br />
+間違えてコミットしたり、修正漏れがあったときによく使います。</p>
+<blockquote><p>git reset –soft HEAD^</p></blockquote>
+<p>&nbsp;</p>
+<h3>git merge</h3>
+<p>現在のブランチに対して、他のブランチで行った変更を取り込むために使うコマンドです。<br />
+以下の例では、ブランチbug-fixをmasterブランチにマージします。</p>
+<blockquote><p>git checkout master<br />
+git merge bug-fix</p></blockquote>
+<p>&nbsp;</p>
+<h3>git pull</h3>
+<p>リモートブランチの変更を取り込むために使うコマンドです。<br />
+以下の例では、ローカルリポジトリのmasterブランチにリモートリポジトリoriginのmasterブランチを取り込みます。</p>
+<blockquote><p>git checkout master<br />
+git pull origin master</p></blockquote>
+<p>&nbsp;</p>
+<p>今回の記事は以上です。</p>
+<p>ぜひご自身で使ってみてください！</p>
+<p><a href="http://techacademy.jp/magazine/5304" target="_blank" rel="noopener">Gitのインストール方法の記事</a>もあるので、合わせてご覧ください。</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8554" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png" alt="20160620" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>なんだか覚えることがたくさんあって、大変そうですね・・・。</p>
+<p>&nbsp;</p>
+<p><img class="alignnone wp-image-8553" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2.png" alt="20163020-2" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20163020-2-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>そうだね。でも最初のうちは使うコマンドは本当に最低限commitしてpushとかpullとかだけ抑えておけばいいから、少しずつ慣れていこうね。</p>
+<p><img class="alignnone wp-image-8554" src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png" alt="20160620" width="100" height="100" align="left" srcset="https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620.png 2000w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-400x400.png 400w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-768x768.png 768w, https://static.techacademy.jp/magazine/wp-content/uploads/2016/06/20160620-800x800.png 800w" sizes="(max-width: 100px) 100vw, 100px" /></p>
+<p>&nbsp;</p>
+<p>はい♪</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote><p>[お知らせ]TechAcademyでは自宅で学べる<a href="https://techacademy.jp/github-training?utm_source=tamagazine&amp;utm_medium=referral&amp;utm_content=6235&amp;utm_campaign=post" target="_blank" rel="noopener">オンライン完結のGitHub講座</a>を開催しています。わからないことをチャットで質問すると、現役エンジニアのメンターが毎日すぐに回答します。</p></blockquote>
+          </div>
+
+        </article>
+        <div class="post-footer">
+
+  <!-- 広告 -->
+  
+<!-- 広告 -->
+<div class="ad row wow fadeInUp">
+  <div class="banner-left col-md-6 col-sm-6">
+    <a href="https://techacademy.jp/briefing-lp-s?utm_source=tamagazine&utm_medium=referral&utm_campaign=sidebar-bottom-l" target='_blank'>
+      <img src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/05/webapp_briefing_03_300-250.jpg" alt="" />
+    </a>
+  </div>
+  <div class="banner-right col-md-6 col-sm-6">
+
+    
+      <!-- TechAcademy_SingleBottomRight_300x250 -->
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:250px"
+           data-ad-client="ca-pub-2002061910642335"
+           data-ad-slot="6227005503"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+    
+  </div>
+</div>
+
+<!-- 検索 -->
+<div class="section-md search-box wow fadeInUp">
+  <div class="search-form">
+    <h3 class="section-title title-danger">
+      <i class="fa fa-search fa-l"></i>記事を検索
+    </h3>
+    <form role="search" method="get" id="searchform" action="https://techacademy.jp/magazine/" >
+      <input type="text" value="" name="s" class="search-input" placeholder="キーワード" />
+      <input type="submit" class="btn btn-danger search-btn" value="検索" />
+    </form>
+  </div>
+</div>
+  <!-- ソーシャルボタン -->
+  <div class="section-md social-button-original wow fadeInUp">
+    <a class="btn btn-link btn-submit btn-facebook" href="http://www.facebook.com/sharer.php?u=https://techacademy.jp/magazine/6235&amp;t=今さら聞けない！GitHubの使い方【超初心者向け】" onClick="window.open(encodeURI(decodeURI(this.href)), 'sharewindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1, resizable=!'); return false;"><i class="fa fa-facebook fa-l"></i>Facebookでシェア</a>
+
+    <a class="btn btn-link btn-submit btn-twitter" href="http://twitter.com/intent/tweet?text=今さら聞けない！GitHubの使い方【超初心者向け】&amp;url=https://techacademy.jp/magazine/6235&amp;via=techacademy"><i class="fa fa-twitter fa-l"></i>Twitterでシェア</a>
+
+    <a class="btn btn-link btn-submit btn-hatena" href="http://b.hatena.ne.jp/entry/https://techacademy.jp/magazine/6235" target="_blank"><i class="fa fa-bookmark fa-l"></i>はてブに追加</a>
+  </div>
+
+  <!-- フォローボックス -->
+  <div class="section-md follow-box row wow fadeInUp">
+    <div class="eyecatch col-md-5 col-sm-5" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/eyecatch-20151002-620x349.jpg')">
+    </div>
+    <div class="col-md-7 col-sm-7">
+      <div class="follow-wrap">
+        <div class="follow">
+          <img src="https://static.techacademy.jp/magazine/wp-content/themes/ta-magazine/images/logo-magazine.png" alt="TechAcademyマガジン">
+          <h4>
+            この記事を気に入って頂けたら<br>
+            いいね！・フォローをお願いします
+          </h4>
+          <div class="social-fan">
+            <span class="facebook-page"><div class="fb-like" data-href="https://www.facebook.com/techacademy" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true"></div></span>
+            <span class="twitter-like"><a href="https://twitter.com/techacademy" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- キーワード -->
+      <div class="section-md keywords wow fadeInUp">
+      <h3 class="section-title title-warning">
+        <i class="fa fa-tags fa-l"></i>関連するキーワード
+      </h3>
+      <a href="https://techacademy.jp/magazine/keyword/%e3%83%8f%e3%82%a6%e3%83%84%e3%83%bc" rel="tag">ハウツー</a>    </div>
+  
+  <!-- 関連記事 -->
+      <div class="section-md related-posts wow fadeInUp">
+      <h3 class="section-title title-success">
+        <i class="fa fa-copy fa-l"></i>関連する記事
+      </h3>
+      <div class="entry-list t1" id="post-10264" class="post-10264 post type-post status-publish format-standard has-post-thumbnail hentry category-git tag-1698">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10264">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/57411198_l-800x534.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10264" rel="bookmark">git mergeを使ってブランチをマージする方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+
+今回は、Gitの使用においても重要なgit mergeの使い方を紹介していきたいと思います。...      </div>
+    </div>
+    <span class="entry-category">
+      Git    </span>
+  </div>
+</div><div class="entry-list t1" id="post-10172" class="post-10172 post type-post status-publish format-standard has-post-thumbnail hentry category-git tag-1698">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10172">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/54494130_l-1-800x533.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10172" rel="bookmark">git commitを使って変更内容をコミットする方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+
+今回は、Gitの使用においても重要なgit commitの使い方を紹介していきたいと思います。...      </div>
+    </div>
+    <span class="entry-category">
+      Git    </span>
+  </div>
+</div><div class="entry-list t1" id="post-10260" class="post-10260 post type-post status-publish format-standard has-post-thumbnail hentry category-git tag-1698">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10260">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/32283919_l-800x497.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10260" rel="bookmark">git reset --hardを使ってファイルへの変更を取り消す方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+
+今回は、Gitの使用においても重要なgit commit --hardの使い方を紹介していきた...      </div>
+    </div>
+    <span class="entry-category">
+      Git    </span>
+  </div>
+</div><div class="entry-list t1" id="post-5304" class="post-5304 post type-post status-publish format-standard has-post-thumbnail hentry category-git tag-1698 tag-222">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/5304">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2015/02/eyecatch-20150212_02.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/5304" rel="bookmark">はじめてでもOK！Gitをインストールする方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        これから使い始めるという初心者のために、Git（ギット）のインストール方法を解説した記事です。今回はローカル開発環境にインストールします。
+
+そもそもGit...      </div>
+    </div>
+    <span class="entry-category">
+      Git    </span>
+  </div>
+</div><div class="entry-list t1" id="post-10203" class="post-10203 post type-post status-publish format-standard has-post-thumbnail hentry category-git tag-1698">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10203">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/57411119_l-800x534.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10203" rel="bookmark">誰でもすぐ分かる！git branchでブランチを作成する方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+
+今回は、Gitの使用においても重要なgit branchの使い方を紹介していきたいと思います。...      </div>
+    </div>
+    <span class="entry-category">
+      Git    </span>
+  </div>
+</div><div class="entry-list t1" id="post-10163" class="post-10163 post type-post status-publish format-standard has-post-thumbnail hentry category-git tag-1698">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10163">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/55430675_l-800x528.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10163" rel="bookmark">git statusで変更されたファイルを確認する方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+
+しかし、使用方法をきっちりわかっていないと、便利なツールも宝の持ち腐れとなってしまいます。
+...      </div>
+    </div>
+    <span class="entry-category">
+      Git    </span>
+  </div>
+</div>    </div>
+  
+  <!-- 近似記事 -->
+      <div class="similar-posts wow fadeInUp">
+      <h3 class="section-title title-info">
+        <i class="fa fa-eye fa-l"></i>あわせてよく読まれている記事
+      </h3>
+      <div class="similar-posts cf"><div class="entry-list t1">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10271">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/45536346_l-800x500.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10271" rel="bookmark">git pushを使ってリモートリポジトリへプッシュする方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+今回は、Gitの使用においても重要なgit pushの使い方を紹介していきたいと思います。
+同様に役立つGithubの使い方も解説しているので、合わせてご覧ください。
+&nbsp;
+なお本記事はTechAcademyのオンライン完結のGitHub講座のカリキュラムをもとに執筆しています。
+&nbsp;
+
+&nbsp;
+田島メンター！！リモートリポジトリについてはわかったんですけど、リモートリポジトリに反映させるのはどうしたらいいんですか〜？
+
+&nbsp;
+それならgit pushを使うんだ。
+&nbsp;
+&nbsp;
+git push とは
+ローカルリポジトリで開発したとしても、それをリモートリポジトリに反映できなければ、他の人が書いているコードは過去のバージョンのコードのままです。
+そうならないために、git ではgit pushというリモートリポジトリにローカルリポジトリの変更を反映するためのコマンドが用意されています。
+&nbsp;
+git pushを使用してみる
+それでは実際にgit pushを使用して見ましょう。
+今回はgithubのリモートリポジトリにローカルリポジトリからpushを行ってみましょう。
+git remote -v
+上記のように打ちリモートリポジトリ名が表示されるようにしてください。
+そのあと、ローカルのmasterブランチで、ファイルの変更を行ってコミットしてください。
+今回はローカルで「sample.html」というファイルを作成しました。
+最後にpushしていきます。
+git push origin master
+このように打ち込むと以下の画像のようになり、pushすることができます。
+
+git pushのあとのorigin masterというのはoriginというリモートリポジトリのmasterというブランチにプッシュするという意味です。
+この文字が間違っていると、pushが失敗するので気をつけるようにしてください。
+&nbsp;
+[PR] 現役エンジニアに質問しながらプログラミングを習得する学習方法とはまとめ
+今回はgit push について解説していきました。
+git pushは実際の実務の中でも頻繁に使用するコマンドです。
+またオプションによってはすべてのファイルを無理やり上書きするような危険なコマンドにもなるので、よく理解して使用するようにしましょう。
+git pullの使い方も説明しているので、合わせてご覧ください。
+&nbsp;
+
+&nbsp;
+git pushで反映されました〜！！！
+&nbsp;
+
+&nbsp;
+そうだね。git pushはリモートリポジトリを使うとかならず使うから、覚えておこうね♪
+&nbsp;
+
+&nbsp;
+はい♪
+&nbsp;
+&nbsp;
+[お知らせ]TechAcademyでは自宅で学べるオンライン完結のGitHub講座を開催しています。わからないことをチャットで質問すると、現役エンジニアのメンターが毎日すぐに回答します。
+
+      </div>
+    </div>
+    <span class="entry-category">
+      Git
+    </span>
+  </div>
+</div>
+
+<div class="entry-list t1">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10268">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/41851647_l-800x534.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10268" rel="bookmark">git remoteを使ってリモートリポジトリの追加と削除を行う方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+今回は、Gitの使用においても重要なgit remoteの使い方を紹介していきたいと思います。
+同様に役立つGithubの使い方も解説しているので、合わせてご覧ください。
+&nbsp;
+なお本記事はTechAcademyのオンライン完結のGitHub講座のカリキュラムをもとに執筆しています。
+&nbsp;
+
+&nbsp;
+田島メンター！！リモートリポジトリってなんですか？？？
+&nbsp;
+
+&nbsp;
+リモートリポジトリっていうのは、オンライン上にあるリポジトリのことだよ。
+&nbsp;
+&nbsp;
+リモートリポジトリとは
+私たちは普段gitを利用している際は、ローカルリポジトリというリポジトリを使用しています。
+ローカルリポジトリというのは、その名の通りローカルで作業をするためのリポジトリです。
+ローカルリポジトリはローカルにあるリポジトリのため、このままだと、多人数で作業を行うことができません。そのため、gitを用いた開発では、リモートリポジトリという、ネット上などにまた別のリポジトリを作成して開発を行います。
+&nbsp;
+git remoteを使用してみる
+それでは実際にgit remoteを使用して見ましょう。
+リモートリポジトリの追加はとても簡単です。
+git remote add origin 追加したいリポジトリ
+と打ち込むだけです。
+逆に削除も簡単で
+git remote rm origin
+と打ち込むだけです。
+リモートリポジトリを提供しているサービスは複数ありますが、今回は一番使用しているサービスであるgithubを使用してリモートリポジトリの追加を行ってみましょう。
+上の例通り
+git remote origin git@github.com:BabaShun/sample.git
+と打ち込んでみましょう。
+ユーザー名の部分と、レポジトリ名の部分はそれぞれ変えてください。
+そのあとgit remote -vと打ち込んでリモートリポジトリを確認してみると、以下のように表示されます。
+
+逆にgit remote rm originと打ち込むとリモートリポジトリが削除されていることがわかります。
+&nbsp;
+[PR] 現役エンジニアに質問しながらプログラミングを習得する学習方法とはまとめ
+今回はリモートリポジトリの追加と削除について解説していきました。
+実際のプログラミングの実務において、リモートリポジトリを使用せずに開発するというのはほとんどありえません。必ずgit remoteを使えるようにしておきましょう。
+&nbsp;
+
+&nbsp;
+なるほど！複数人でgitを使う時はリモートリポジトリで管理して、git remoteでリモートリポジトリを指定したりやめたりできるんですね。
+
+&nbsp;
+そうだね。だからgit remoteは必ずと言っていいほど使うコマンドだから覚えておくといいね。
+
+&nbsp;
+はい♪
+&nbsp;
+&nbsp;
+[お知らせ]TechAcademyでは自宅で学べるオンライン完結のGitHub講座を開催しています。わからないことをチャットで質問すると、現役エンジニアのメンターが毎日すぐに回答します。
+
+      </div>
+    </div>
+    <span class="entry-category">
+      Git
+    </span>
+  </div>
+</div>
+
+<div class="entry-list t1">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10274">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/57414191_l-800x533.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10274" rel="bookmark">git pullを使ってリモートリポジトリと同期する方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+今回は、Gitの使用においても重要なgit pushの使い方を紹介していきたいと思います。
+同様に役立つGithubの使い方も解説しているので、合わせてご覧ください。
+&nbsp;
+なお本記事はTechAcademyのオンライン完結のGitHub講座のカリキュラムをもとに執筆しています。
+&nbsp;
+
+&nbsp;
+田島メンター！！他の人がgit pushした結果を自分のローカルリポジトリに反映させるのってどうしたらいいんですか？？？
+
+&nbsp;
+git pullで反映させられるよ。
+&nbsp;
+
+&nbsp;
+そうなんですか！？
+&nbsp;
+&nbsp;
+git pullとは
+他の人が開発した機能をリモートリポジトリにpushしたとします。
+その変更を自分のローカルリポジトリに取り込まないと自分のレポジトリだけ開発から取り残されてしまうことになります。
+そうならないためにgit ではgit pullというリモートリポジトリの変更点をローカルリポジトリに取り込む機能が用意されています。
+&nbsp;
+git pullを使用してみよう
+それでは実際にgit pullを使用してみましょう。
+まず、空のsampleというディレクトリを作成します。そのディレクトリにリモートリポジトリを追加していきます。
+今回はsampleというリモートリポジトリを追加します。
+github上でリモートリポジトリを作成し、以下のコマンドを打ち込みましょう。
+git remote add origin git@github.com:BabaShun/sample.git（BabaShunの部分は自分のユーザー名に変更してください）
+sampleリポジトリ内は以下の画像のようにsample.htmlというファイルが入っています。
+
+それではpullしていきましょう。
+ローカルリポジトリ内で、以下のように打ち込んでください。
+git pull origin master
+するとリモートリポジトリ内のsample.htmlがローカルリポジトリにも反映されています。
+&nbsp;
+[PR] 現役エンジニアに質問しながらプログラミングを習得する学習方法とはまとめ
+今回はgit pullについて解説していきました。
+実際の実務経験で特に大人数で開発している時は、どんどんファイルが更新されていき、git pullする機会も多くなってきます。必ずマスターするようにしましょう。
+git pushの使い方も説明しているので、合わせてご覧ください。
+&nbsp;
+
+&nbsp;
+反映されました！！！
+&nbsp;
+
+&nbsp;
+自分がcommitしてしまっているファイルをpullすると競合が起きてしまったりするから、必ずgit pullを予めやっておいたほうが良いよ。
+
+&nbsp;
+はい、わかりました♪
+&nbsp;
+&nbsp;
+[お知らせ]TechAcademyでは自宅で学べるオンライン完結のGitHub講座を開催しています。わからないことをチャットで質問すると、現役エンジニアのメンターが毎日すぐに回答します。
+
+      </div>
+    </div>
+    <span class="entry-category">
+      Git
+    </span>
+  </div>
+</div>
+
+<div class="entry-list t1">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/6445">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2015/12/20151215_github-pages-800x450.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/6445" rel="bookmark">無料で使える！GitHub Pagesを使ってWebページを公開する方法</a>
+      </h3>
+      <div class="entry-excerpt">
+        ソフトウェア開発プロジェクトのためのソースコード管理サービスのGitHub。開発者を中心に使っている人も多いことでしょう。このGitHubに、無料でWebページを公開できるGitHub Pagesというサービスがあることをご存知でしょうか？
+今回は、GitHub Pagesの使い方、Webページを公開する方法を紹介します。GitHubをまだ使ったことがなくても、簡単に公開できるのでぜひ試してみてください。
+本記事はTechAcademyのオンライン完結のGitHub講座のカリキュラムをもとに執筆しています。
+&nbsp;
+
+&nbsp;
+田島メンター！！GitHubにGitHub Pagesってあるんですけど、これってなんですか〜？
+&nbsp;
+
+&nbsp;
+GitHub Pagesっていうのはね、ウェブページをGitを使って簡単に作成できるサービスなんだ。
+&nbsp;
+GitHub Pagesとは
+GitHub Pagesは、GitHubが提供するホスティングサービスで、ウェブページをインターネット上に公開することができます。自分自身や所属する組織、あるいはプロジェクトのウェブページをGit/GitHubのリポジトリを用いて、簡単な手順で公開することが可能です。
+ウェブページのアップロードはGitおよびGitHubのインターフェイスを用いるので、別途FTPクライアントソフトなどは必要なく、変更のあったファイルだけを簡単に更新することができます。
+またGitHub Pagesは、基本的に静的なウェブページをホスティングするサービスです。データベースを用いるような動的なウェブページは公開できません。また、プライベートリポジトリであっても、GitHub Pagesはインターネット上で公開されるので、注意しましょう。
+公開するウェブページは自分で一から作成することもできますし、GitHubがあらかじめ用意してあるテンプレートを用いることもできます。
+&nbsp;
+GitHub Pagesを使ってWebページを公開
+ここからは具体的な使い方について解説します。
+下記の流れでWebページを公開していきます。
+
+GitHub Pages用のリポジトリの作成
+ウェブページの作成
+GitHubへプッシュ
+GitHub Pagesへアクセスして確認
+
+&nbsp;
+1.GitHub Pages用のリポジトリの作成
+GitHub Pagesには大きく分けて2つの種類があります。ユーザのウェブページを公開するユーザサイト（User site）と、プロジェクトのウェブページを公開するプロジェクトサイト（Project site）です。組織サイト（Organization site）もありますが、これは主体がユーザか組織かというだけで、基本的にはユーザサイトと同じものであると言えます。
+ユーザサイトとプロジェクトサイトではリポジトリの作成方法が少し異なりますので、それぞれ紹介します。
+&nbsp;
+ユーザサイト用リポジトリの作成
+GitHubへアクセスし「username.github.io」という名前のリポジトリを作成していきます。
+まずはGitHubにアクセスし、ログインしますしてください。ページ右上の「+」アイコンをクリックし、「New repository」をクリックします。
+
+&nbsp;
+次に「Repository name」欄に、「username.github.io」（「username」の部分は自分のGitHubユーザ名）と入力し、「Create repository」ボタンをクリックします。
+
+&nbsp;
+続いて、ローカルのターミナルで、下記のように実行してください（usernameは自分のGitHubユーザ名に変更しましょう）。
+$ git clone https://github.com/username/username.github.io
+これでローカル環境にレポジトリがクローンされました。
+&nbsp;
+この際、カレントディレクトリに「username.github.io」というディレクトリができているので、そのディレクトリに入ります。
+$ cd username.github.io
+これでユーザサイト用のリポジトリが作成できました。
+&nbsp;
+プロジェクトサイト用リポジトリの作成
+プロジェクトサイト用リポジトリを作成する方法を紹介します。
+ウェブページを作成したいプロジェクトのリポジトリに「gh-pages」という名前のブランチを作成し、チェックアウトします（「/path/to/local-repository」はローカルにあるリポジトリのパス）。
+$ cd /path/to/local-repository
+$ git branch gh-pages
+$ git checkout gh-pages
+既存リポジトリの場合、すでに存在しているプロジェクトのファイル群はウェブページには基本的に必要ないので削除します（「.git」ディレクトリはGitが用いるので残します）。
+これでプロジェクトサイト用のリポジトリが作成できました。
+&nbsp;
+2.ウェブページの作成
+GitHub Pagesに反映させるためのページをローカルのリポジトリで作成します。
+HTML、CSS、画像はもちろん、JavaScriptを用いることもできます。ここでは簡単に「Hello world」と文字列を表示するページを作成してみます。自分で試すときは、しっかりHTMLファイルを作成しても構いません。
+$ echo "Hello world" &gt; index.html
+
+HTMLファイルが完成したので、リポジトリにコミットします。
+$ git add --all
+$ git commit -m "Initial commit"
+これで事前準備は完了です。
+&nbsp;
+3.GitHubへプッシュ
+GitHub Pagesで表示させるために、ローカルでコミットした変更をGitHubへプッシュします。今回は、originという名前でGitHubのリポジトリを作成した例ですので、別の名前をつけた場合は置き換えてください。
+ここでもユーザサイトとプロジェクトサイトでやり方が異なるので注意しましょう。
+&nbsp;
+ユーザサイトの場合は「master」ブランチをプッシュします。
+$ git push -u origin master
+プロジェクトサイトの場合は「gh-pages」ブランチをプッシュします。
+$ git
+      </div>
+    </div>
+    <span class="entry-category">
+      Git
+    </span>
+  </div>
+</div>
+
+<div class="entry-list t1">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10252">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/55143993_l-800x534.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10252" rel="bookmark">git rmを使ってファイルを削除する方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+今回は、Gitの使用においても重要なgit rmの使い方を紹介していきたいと思います。
+同様に役立つGithubの使い方も解説しているので、合わせてご覧ください。
+&nbsp;
+なお本記事はTechAcademyのオンライン完結のGitHub講座のカリキュラムをもとに執筆しています。
+&nbsp;
+
+&nbsp;
+田島メンター！！gitで管理しているファイルを消すときってどうしたらいいんですか？なんか空のファイルが履歴に残ってしまったんですけど・・・。
+
+&nbsp;
+git rmで削除した方が良いね。
+&nbsp;
+&nbsp;
+git rmとは
+git rm とはgitの管理下にあるファイルを削除するためのコマンドです。
+標準のUNIXコマンドでrmというファイルを削除するためのコマンドがありますが、それのgit対応版のようなものです。
+git はファイルの追加だけではなく、削除も差分として保存します。そのため削除された情報を手に入れる必要があります。
+普通のrmコマンドだとgitの管理下に空のファイルとして、履歴が保存されることがあります。そうならないためにgit rmコマンドを使用して削除します。
+&nbsp;
+実際にgit rmを使用してみる
+それでは実際にgit rmを使用してみましょう。
+今回はsampleフォルダ内の「sample.html」というファイルを削除してみましょう。
+sampleフォルダ内にsample.htmlを作成しましょう。
+次にsample.htmlを
+git add, 
+git commit
+してgitリポジトリ内を更新してください。
+git statusを確認すると以下のようにファイルが全てコミットされていることを確認してください。
+
+そのあと以下のコマンドを打ってファイルを削除しましょう。
+git rm sample.html
+そのあとgit statusを確認してみるといかのようにファイルが削除されていることがわかります。
+
+これで削除したファイルも正常にコミットすることができます。
+&nbsp;
+[PR] 現役エンジニアに質問しながらプログラミングを習得する学習方法とはまとめ
+今回はgit rmについて解説していきました。
+git rmは使用頻度自体は他のコマンドと比べて多くありませんが、覚えておく必要があるコマンドと言えます。しっかり理解を深めるようにしましょう。
+&nbsp;
+
+&nbsp;
+普通にファイルを削除するのとgit rmは違うんですね。
+&nbsp;
+
+&nbsp;
+そうだね。gitの履歴も込みで削除してくれるから、ファイルを消したい時は使うと良いよ。
+&nbsp;
+
+&nbsp;
+はい♪
+&nbsp;
+&nbsp;
+[お知らせ]TechAcademyでは自宅で学べるオンライン完結のGitHub講座を開催しています。わからないことをチャットで質問すると、現役エンジニアのメンターが毎日すぐに回答します。
+
+      </div>
+    </div>
+    <span class="entry-category">
+      Git
+    </span>
+  </div>
+</div>
+
+<div class="entry-list t1">
+  <div class="entry row">
+    <div class="entry-eyecatch col-md-4 col-sm-4 col-xs-4">
+      <a href="https://techacademy.jp/magazine/10172">
+        <div class="eyecatch-image" style="background-image:url('https://static.techacademy.jp/magazine/wp-content/uploads/2016/10/54494130_l-1-800x533.jpg')"></div>
+      </a>
+    </div>
+    <div class="entry-detail col-md-8 col-sm-8 col-xs-8">
+      <h3 class="entry-title">
+        <a href="https://techacademy.jp/magazine/10172" rel="bookmark">git commitを使って変更内容をコミットする方法【初心者向け】</a>
+      </h3>
+      <div class="entry-excerpt">
+        Git(ギット)はとても便利なバージョン管理システムです。
+今回は、Gitの使用においても重要なgit commitの使い方を紹介していきたいと思います。
+同様に役立つGithubの使い方も解説しているので、合わせてご覧ください。
+&nbsp;
+なお本記事はTechAcademyのオンライン完結のGitHub講座のカリキュラムをもとに執筆しています。
+
+&nbsp;
+田島メンター！！git commitって何をしているコマンドなんですか？？？
+&nbsp;
+
+&nbsp;
+git commitはね、ファイルの変更した部分とかを保存しておくコマンドだよ。
+&nbsp;
+git commitとは
+gitを使用すれば簡単にファイルの進捗を管理することができます。
+そのためにファイルの変更や追加などを保存しておく必要があります。そのためのコマンドがgit commitです。
+git commitを利用すればファイルの変更をgitレポジトリに保存することができます。
+&nbsp;
+git commitを使用してみよう
+それでは実際にgit commitを使用してみましょう。
+今回はsampleというディレクトリの中で、「sample.html」というファイルをcommitしてみましょう。
+まずはsampleディレクトリ内でsample.htmlを作成しましょう。作成方法は何でも大丈夫ですが今回はtouchコマンドを使用して作成してみましょう。
+touch sample.html
+と打てば、sample.htmlが作成されます。
+次にsample.htmlをステージングエリアに移動します。
+git add .
+と打ってください。そしてgit statusを確認してみると、以下のようにステージングエリアにファイルが移動されたことがわかります。
+
+最後にsample.htmlをコミットしてみます。
+git commit -m ‘最初のコミット’
+と打ってみてください。
+その後「git log」と打つとコミットできていることが確認できます。
+
+&nbsp;
+[PR] 現役エンジニアに質問しながらプログラミングを習得する学習方法とはまとめ
+今回はgit commitについて解説していきました。
+git commitはgitで基礎的なコマンドで一番使用すると言っても過言ではないコマンドになりますので、必ず覚えておくようにしましょう。
+&nbsp;
+
+&nbsp;
+なるほど！ステージングエリアにあるファイルがどう変わったかを調べてくれるんですね！！！
+
+&nbsp;
+そうだね。git add と git commit はpushするときに必ず使うコマンドだから、覚えておくといいね♪
+
+&nbsp;
+はい♪
+&nbsp;
+&nbsp;
+[お知らせ]TechAcademyでは自宅で学べるオンライン完結のGitHub講座を開催しています。わからないことをチャットで質問すると、現役エンジニアのメンターが毎日すぐに回答します。
+
+      </div>
+    </div>
+    <span class="entry-category">
+      Git
+    </span>
+  </div>
+</div>
+</div><!-- Similar Posts took 83.125 ms -->    </div>
+  
+  <!-- Outbrain -->
+  <!--<div class="OUTBRAIN wow fadeInUp" data-src="https://techacademy.jp/magazine/10163" data-widget-id="AR_1" data-ob-template="TechAcademy"></div>-->
+
+</div>
+
+          </div>
+
+    <div class="sidenav col-md-3 col-sm-3">
+
+    <div class="section ad">
+      <a href="https://techacademy.jp/briefing-lp-s?utm_source=tamagazine&utm_medium=referral&utm_campaign=sidebar-bottom-l" target="_blank">
+        <img src="https://static.techacademy.jp/magazine/wp-content/uploads/2016/05/webapp_briefing_03_300-250.jpg" alt="" />
+      </a>
+    </div>
+
+    
+      <div class="section ad">
+        <!-- TechAcademy_SidebarTop_300x250 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:250px"
+             data-ad-client="ca-pub-2002061910642335"
+             data-ad-slot="5342688305"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
+    
+    <div class="section ranking">
+      <h4 class="side-mini-title title-danger"><i class="fa fa-line-chart fa-l"></i>WEEKLY RANKING</h4>
+              
+<!-- WordPress Popular Posts Plugin v3.3.3 [PHP] [weekly] [views] [custom] -->
+
+<div>
+<div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/1330'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2013/12/eyecatch-20131227_02.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/1330'>意外と簡単？Photoshopで画像を切り抜く方法</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/9872'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2016/09/IMARIP0I9A7464_TP_V-800x533.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/9872'>【作業が圧倒的に早くなる！】知っておきたいExcel(エクセル)の関数10選</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/9927'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2016/09/31583936_l-800x533-800x533.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/9927'>【超便利！】Excel(エクセル)でカレンダーを作成する方法</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/5318'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2015/02/eyecatch-20150213_011.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/5318'>今さら聞けない！コマンドプロンプトの使い方【初心者向け】</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/6235'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2015/09/eyecatch-20151002-620x349.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/6235'>今さら聞けない！GitHubの使い方【超初心者向け】</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/6270'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2015/10/eyecatch-bootstrap-620x349.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/6270'>Webデザインの知識がなくてもOK！Bootstrapの使い方【入門者向け】</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/8801'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2016/07/WhatJSMock1_Social_1200x682-800x369.png)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/8801'>JavaScriptとは何なのか！初心者向けに徹底解説</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/4872'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2014/04/eyecatch-20141202_01.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/4872'>スタイルシート（CSS）の基本的な書き方【初心者向け】</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/1172'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2016/01/picjumbo.com_HNCK0906-1-800x485.jpg)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/1172'>初心者におすすめ！無料・有料で使えるWordPressのテーマ30選【日本語対応のみ】</a></h4></div></div><div class='entry-list t2'><div class='entry row'><div class='entry-eyecatch'><a href='https://techacademy.jp/magazine/8735'><div class='eyecatch-image' style='background-image:url(https://static.techacademy.jp/magazine/wp-content/uploads/2016/07/8f796b3ea4f2a3615f7986b74e532c97-800x495.png)'></div></a></div><h4 class='entry-title'><a href='https://techacademy.jp/magazine/8735'>【データから紐解く！】2017年の人気プログラミング言語を徹底比較！</a></h4></div></div>
+</div>
+
+<!-- End WordPress Popular Posts Plugin v3.3.3 -->
+          </div>
+
+    <div class="section twitter-box">
+      <a href="https://twitter.com/techacademy" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @techacademy</a>
+    </div>
+
+    <div class="section facebook-box">
+      <div class="fb-page" data-href="https://www.facebook.com/techacademy/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/techacademy/"><a href="https://www.facebook.com/techacademy/">TechAcademy [テックアカデミー]</a></blockquote></div></div>
+    </div>
+
+    <div class="section search-form">
+      <form role="search" method="get" id="searchform" action="https://techacademy.jp/magazine/" >
+        <input type="text" value="" name="s" class="search-input" placeholder="キーワード" />
+        <input type="submit" class="btn btn-danger search-btn" value="検索" />
+      </form>
+    </div>
+
+    <div class="scroll-follow">
+      <div class="ad">
+        <a href="https://techacademy.jp/briefing-lp-webapp-s?utm_source=tamagazine&utm_medium=referral&utm_campaign=sidebar-bottom" target='_blank'>
+          <img src="https://static.techacademy.jp/magazine/wp-content/uploads/2017/04/online-bootcamp_300-250_06.jpg" alt="オンラインブートキャンプ説明会" />
+        </a>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+  </div>
+</div>
+
+          <div class="sidebar">
+                </div>
+    
+</div>
+<!-- /container-fluid -->
+
+<!--breadcrumbs-->
+
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <span typeof="v:Breadcrumb">
+        <a rel="v:url" property="v:title" title="TechAcademy（テックアカデミー）" href="https://techacademy.jp/" class="breadcrumb-home"><i class="fa fa-home"></i><strong>TechAcademy（テックアカデミー）</strong></a>
+      </span>
+            <!-- Breadcrumb NavXT 5.4.0 -->
+<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to the プログラミング category archives." href="https://techacademy.jp/magazine/programming" class="taxonomy category">プログラミング</a></span><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to the Git category archives." href="https://techacademy.jp/magazine/programming/git" class="taxonomy category">Git</a></span><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to 今さら聞けない！GitHubの使い方【超初心者向け】." href="https://techacademy.jp/magazine/6235" class="post post-post current-item">今さら聞けない！GitHubの使い方【超初心者向け】</a></span>    </div>
+  </div>
+<!--/breadcrumbs-->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <h4>MENU</h4>
+          <ul>
+            <li>
+              <a href="https://techacademy.jp/magazine/about">当メディアについて</a>
+            </li>
+            <li>
+              <a href="https://techacademy.jp/magazine/ads">広告掲載について</a>
+            </li>
+            <li>
+              <a href="https://techacademy.jp/magazine/contact">お問い合わせ</a>
+            </li>
+            <li>
+              <a href="https://techacademy.jp/magazine/category">カテゴリーから探す</a>
+            </li>
+            <li>
+              <a href="https://techacademy.jp/magazine/archive">アーカイブから探す</a>
+            </li>
+            <li>
+              <a href="https://techacademy.jp/magazine/keyword">キーワードから探す</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <h4>TechAcademy</h4>
+          <ul>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/rails-bootcamp"><i class="fa fa-diamond fa-fw fa-l"></i>Webアプリ<span class="mobile-hide">ケーション</span>コース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/webdesign-bootcamp"><i class="fa fa-object-group fa-fw fa-l"></i>Webデザインコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/frontend-bootcamp"><i class="fa fa-code fa-fw fa-l"></i>フロントエンドコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/webdirection-bootcamp"><i class="fa fa-sitemap fa-fw fa-l"></i>Webディレクションコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/webmarketing-bootcamp"><i class="fa fa-line-chart fa-fw fa-l"></i>Webマーケティングコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/wordpress-bootcamp"><i class="fa fa-wordpress fa-fw fa-l"></i>WordPressコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/iphone-bootcamp"><i class="fa fa-apple fa-fw fa-l"></i>iPhoneアプリコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/android-bootcamp"><i class="fa fa-android fa-fw fa-l"></i>Androidアプリコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/unity-bootcamp"><i class="fa fa-fw fa-gamepad fa-l"></i>Unityコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/appdesign-bootcamp"><i class="fa fa-tablet fa-fw fa-l"></i>UI/UXデザインコース</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://techacademy.jp/first-programming-bootcamp"><i class="fa fa-leaf fa-fw fa-l"></i>はじ<span class="mobile-hide">めての</span>プロ<span class="mobile-hide">グラミング</span>コース</a>
+              </li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <h4 class="bottom-row">GROUP SERVICE</h4>
+          <ul>
+            <li>
+              <a target="_blank" href="https://techacademy.jp/junior">TechAcademyジュニア</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://techacademy.jp/career-prep">オンライン就職予備校</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://techacademy.jp/corporate">新入社員向けITスキル研修</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://techacademy.jp/recruit">IT人材採用支援</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://edtech.jp">EdTech.jp（ITスクール検索）</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <h4 class="bottom-row" id="mail-magazine">MAIL MAGAZINE</h4>
+          <p><i class="fa fa-envelope fa-l"></i><span class="mobile-hide">新着記事などの</span>メルマガを受け取る
+          </p>
+          <div class="mailmagazine-form">
+            <form action="//techacademy.us7.list-manage.com/subscribe/post?u=6764cbdd9a282f9833a6f0a12&amp;id=16870b33f3" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <input class="input-email" placeholder="hello@techacademy.jp" required="required" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL"><input type="submit" name="commit" value="登録" class="input-btn btn btn-xs btn-gray" data-disable-with="送信中…">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="row">
+        <div class="copyright col-md-6 col-sm-6 col-xs-6">
+          &copy;&nbsp;<span>2009 - 2017&nbsp;</span>KiRAMEX &nbsp;<span class="mobile-hide">CORPORATION.</span>
+        </div>
+        <div class="social-links col-md-6 col-sm-6 col-xs-6">
+          <a target="_blank" href="https://www.facebook.com/techacademy"><i class="fa fa-facebook"></i></a><a target="_blank" href="https://twitter.com/techacademy"><i class="fa fa-twitter"></i></a><a target="_blank" href="https://plus.google.com/+TechacademyJp"><i class="fa fa-google-plus"></i></a><a target="_blank" href="https://techacademy.jp/magazine/feed/"><i class="fa fa-rss"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var leadin_wordpress = {"userRole":"visitor","pageType":"post","leadinPluginVersion":"6.1.2"};
+/* ]]> */
+</script>
+<script type='text/javascript' async defer src='//js.hs-scripts.com/1823092.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201737'></script>
+<script type='text/javascript' src='https://static.techacademy.jp/magazine/wp-includes/js/wp-embed.min.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201737.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.0.4',blog:'44127139',post:'6235',tz:'9',srv:'techacademy.jp'} ]);
+	_stq.push([ 'clickTrackerInit', '44127139', '6235' ]);
+</script>
+
+<a class="pagetop" href="#top"></a>
+
+<script src="https://static.techacademy.jp/magazine/wp-content/themes/ta-magazine/js/drawer.js"></script>
+
+<!-- Pocket-->
+<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+<!-- /Pocket-->
+
+<!-- Criteo-->
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+window.criteo_q = window.criteo_q || [];
+window.criteo_q.push(
+  { event: "setAccount", account: 30101 },
+  { event: "setSiteType", type: "m" },
+  { event: "viewItem", item: "training_16" }
+);
+</script>
+<!-- /Criteo-->
+
+<!-- Intercom-->
+<!-- /Intercom-->
+
+</body>
+</html>
+
+<!-- Dynamic page generated in 0.530 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2017-09-11 13:05:55 -->
+
+<!-- Compression = gzip -->
